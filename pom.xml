@@ -10,32 +10,32 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>3.2.1.RELEASE</version>
+			<version>${springframework-core}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>3.2.1.RELEASE</version>
+			<version>${springframework-core}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.2.1.RELEASE</version>
+			<version>${springframework-core}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>3.1.4.RELEASE</version>
+			<version>${spring-security}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>3.1.4.RELEASE</version>
+			<version>${spring-security}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>3.1.4.RELEASE</version>
+			<version>${spring-security}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -107,4 +107,9 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<properties>
+		<springframework-core>3.2.1.RELEASE</springframework-core>
+		<spring-security>3.1.4.RELEASE</spring-security>
+	</properties>
 </project>

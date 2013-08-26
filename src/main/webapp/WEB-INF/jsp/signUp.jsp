@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/ExpenseManager/resources/css/navigation.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/footer.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/signup.css" />
+<link rel="stylesheet" href="/ExpenseManager/resources/css/form.css" />
 <script type="text/javascript" src="/ExpenseManager/resources/js/jquery-2.0.2.js"></script>
 <script type="text/javascript" src="/ExpenseManager/resources/js/signUp.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

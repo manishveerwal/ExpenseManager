@@ -1,0 +1,11 @@
+#signInSide{
+	margin: 0px 300px 0px 0px;
+	border: 1px solid black;
+}
+
+#signIn{
+	margin: 10px 0px 10px 10px;
+	float: right;
+	border: 1px solid black;
+	padding: 10px;
+}

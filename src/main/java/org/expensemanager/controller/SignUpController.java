@@ -8,7 +8,6 @@ import org.expensemanager.bean.EmailMsg;
 import org.expensemanager.bean.User;
 import org.expensemanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,7 @@ public class SignUpController {
 
 	private Pattern pattern;
 	
-	private static final String DEFAULT_ROLE = "USER";
+	private static final String DEFAULT_ROLE = "ROLE_USER";
 	
 	public SignUpController() {
 		pattern = Pattern.compile(EMAIL_PATTERN);

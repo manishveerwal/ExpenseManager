@@ -5,6 +5,7 @@
 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
 
+ 	<!-- Initialization for data source -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
@@ -14,4 +15,14 @@ http://www.springframework.org/schema/jee http://www.springframework.org/schema/
 		<property name="maxActive" value="10" />
 	</bean>
 
+	<!-- Spring Transaction Manager -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="userService" class="org.expensemanager.service.UserServiceImpl">
+		<constructor-arg name="transactionManager" ref="transactionManager" />
+		<constructor-arg name="dataSource" ref="dataSource" />
+	</bean>
+	
 </beans>

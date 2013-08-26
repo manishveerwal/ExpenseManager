@@ -1,0 +1,437 @@
+--------------------------------------------------------
+--  File created - Friday-August-23-2013   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table CATEGORY
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."CATEGORY" 
+   (	"CATEGORY_ID" NUMBER, 
+	"CATEGORY_NAME" VARCHAR2(20 BYTE), 
+	"CATEGORY_LEVEL" NUMBER, 
+	"SUPER_CATEGORY_ID" NUMBER, 
+	"CATEGORY_DEFAULT" VARCHAR2(5 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table COUNTRY
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."COUNTRY" 
+   (	"COUNTRY_ID" NUMBER, 
+	"NAME" VARCHAR2(20 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table CURRENCY
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."CURRENCY" 
+   (	"CURRENCY_ID" NUMBER, 
+	"CURRENCY_NAME" VARCHAR2(30 BYTE), 
+	"COUNTRY_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table FORMAT_DATE
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."FORMAT_DATE" 
+   (	"ID" NUMBER, 
+	"DATE_FORMAT_NAME" VARCHAR2(50 BYTE), 
+	"FORMAT_DEFAULT" VARCHAR2(5 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table ROLE
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."ROLE" 
+   (	"ROLE_ID" NUMBER, 
+	"ROLE" VARCHAR2(20 BYTE)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table TRANSACTION_LOG
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."TRANSACTION_LOG" 
+   (	"TRANSACTION_ID" NUMBER, 
+	"TRANSACTION_DATE" DATE, 
+	"TRANSACTION_AMOUNT" NUMBER, 
+	"DESCRIPTION" VARCHAR2(256 BYTE), 
+	"CATEGORY_ID" NUMBER, 
+	"USER_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table USER_CATEGORY
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."USER_CATEGORY" 
+   (	"USER_ID" NUMBER, 
+	"CATEGORY_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table USER_CREDENTIAL
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."USER_CREDENTIAL" 
+   (	"USER_ID" NUMBER, 
+	"EMAIL" VARCHAR2(50 BYTE), 
+	"PASSWORD" VARCHAR2(30 BYTE), 
+	"ROLE_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table USER_CURRENCY
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."USER_CURRENCY" 
+   (	"USER_ID" NUMBER, 
+	"CURRENCY_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table USER_DATE_FORMAT
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."USER_DATE_FORMAT" 
+   (	"USER_ID" NUMBER, 
+	"DATE_FORMAT_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table USER_DETAILS
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."USER_DETAILS" 
+   (	"USER_ID" NUMBER, 
+	"FIRST_NAME" VARCHAR2(30 BYTE), 
+	"LAST_NAME" VARCHAR2(30 BYTE), 
+	"GENDER" VARCHAR2(1 BYTE), 
+	"COUNTRY_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index CATEGORY_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EXPENSE"."CATEGORY_PK" ON "EXPENSE"."CATEGORY" ("CATEGORY_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index COUNTRY_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EXPENSE"."COUNTRY_PK" ON "EXPENSE"."COUNTRY" ("COUNTRY_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index CURRENCY_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EXPENSE"."CURRENCY_PK" ON "EXPENSE"."CURRENCY" ("CURRENCY_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index FORMAT_DATE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EXPENSE"."FORMAT_DATE_PK" ON "EXPENSE"."FORMAT_DATE" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index ROLE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EXPENSE"."ROLE_PK" ON "EXPENSE"."ROLE" ("ROLE_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index TRANSACTION_LOG_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EXPENSE"."TRANSACTION_LOG_PK" ON "EXPENSE"."TRANSACTION_LOG" ("TRANSACTION_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index USER_CREDENTIAL_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EXPENSE"."USER_CREDENTIAL_PK" ON "EXPENSE"."USER_CREDENTIAL" ("USER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table CATEGORY
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."CATEGORY" ADD CONSTRAINT "CATEGORY_PK" PRIMARY KEY ("CATEGORY_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "EXPENSE"."CATEGORY" MODIFY ("CATEGORY_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table COUNTRY
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."COUNTRY" ADD CONSTRAINT "COUNTRY_PK" PRIMARY KEY ("COUNTRY_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "EXPENSE"."COUNTRY" MODIFY ("COUNTRY_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table CURRENCY
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."CURRENCY" ADD CONSTRAINT "CURRENCY_PK" PRIMARY KEY ("CURRENCY_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "EXPENSE"."CURRENCY" MODIFY ("CURRENCY_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EXPENSE"."CURRENCY" MODIFY ("COUNTRY_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table FORMAT_DATE
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."FORMAT_DATE" ADD CONSTRAINT "FORMAT_DATE_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "EXPENSE"."FORMAT_DATE" MODIFY ("ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ROLE
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."ROLE" ADD CONSTRAINT "ROLE_PK" PRIMARY KEY ("ROLE_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "EXPENSE"."ROLE" MODIFY ("ROLE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TRANSACTION_LOG
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."TRANSACTION_LOG" MODIFY ("TRANSACTION_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EXPENSE"."TRANSACTION_LOG" ADD CONSTRAINT "TRANSACTION_LOG_PK" PRIMARY KEY ("TRANSACTION_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table USER_CREDENTIAL
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."USER_CREDENTIAL" MODIFY ("USER_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EXPENSE"."USER_CREDENTIAL" MODIFY ("ROLE_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EXPENSE"."USER_CREDENTIAL" ADD CONSTRAINT "USER_CREDENTIAL_PK" PRIMARY KEY ("USER_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table USER_DETAILS
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."USER_DETAILS" MODIFY ("USER_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EXPENSE"."USER_DETAILS" MODIFY ("COUNTRY_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Ref Constraints for Table CURRENCY
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."CURRENCY" ADD CONSTRAINT "CURRENCY_COUNTRY_FK" FOREIGN KEY ("COUNTRY_ID")
+	  REFERENCES "EXPENSE"."COUNTRY" ("COUNTRY_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table TRANSACTION_LOG
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."TRANSACTION_LOG" ADD CONSTRAINT "TRANSACTION_LOG_CATEGORY_FK" FOREIGN KEY ("CATEGORY_ID")
+	  REFERENCES "EXPENSE"."CATEGORY" ("CATEGORY_ID") ENABLE;
+ 
+  ALTER TABLE "EXPENSE"."TRANSACTION_LOG" ADD CONSTRAINT "TRANSACTION_LOG_USER_FK2" FOREIGN KEY ("USER_ID")
+	  REFERENCES "EXPENSE"."USER_CREDENTIAL" ("USER_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table USER_CATEGORY
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."USER_CATEGORY" ADD CONSTRAINT "USER_CATEGORY_ID_FK2" FOREIGN KEY ("CATEGORY_ID")
+	  REFERENCES "EXPENSE"."CATEGORY" ("CATEGORY_ID") ENABLE;
+ 
+  ALTER TABLE "EXPENSE"."USER_CATEGORY" ADD CONSTRAINT "USER_ID_CATEGORY_FK" FOREIGN KEY ("USER_ID")
+	  REFERENCES "EXPENSE"."USER_CREDENTIAL" ("USER_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table USER_CREDENTIAL
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."USER_CREDENTIAL" ADD CONSTRAINT "USER_CREDENTIAL_ROLE_CON" FOREIGN KEY ("ROLE_ID")
+	  REFERENCES "EXPENSE"."ROLE" ("ROLE_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table USER_CURRENCY
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."USER_CURRENCY" ADD CONSTRAINT "CURRENCY_ID_FK2" FOREIGN KEY ("CURRENCY_ID")
+	  REFERENCES "EXPENSE"."CURRENCY" ("CURRENCY_ID") ENABLE;
+ 
+  ALTER TABLE "EXPENSE"."USER_CURRENCY" ADD CONSTRAINT "USER_ID_FK" FOREIGN KEY ("USER_ID")
+	  REFERENCES "EXPENSE"."USER_CREDENTIAL" ("USER_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table USER_DATE_FORMAT
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."USER_DATE_FORMAT" ADD CONSTRAINT "USER_DATE_FORMAT_ID_FK2" FOREIGN KEY ("DATE_FORMAT_ID")
+	  REFERENCES "EXPENSE"."FORMAT_DATE" ("ID") ENABLE;
+ 
+  ALTER TABLE "EXPENSE"."USER_DATE_FORMAT" ADD CONSTRAINT "USER_ID_DATE_FORMAT_FK" FOREIGN KEY ("USER_ID")
+	  REFERENCES "EXPENSE"."USER_CREDENTIAL" ("USER_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table USER_DETAILS
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."USER_DETAILS" ADD CONSTRAINT "USER_DETAILS_COUNTRY_ID" FOREIGN KEY ("COUNTRY_ID")
+	  REFERENCES "EXPENSE"."COUNTRY" ("COUNTRY_ID") ENABLE;
+ 
+  ALTER TABLE "EXPENSE"."USER_DETAILS" ADD CONSTRAINT "USER_DETAILS_USER_ID" FOREIGN KEY ("USER_ID")
+	  REFERENCES "EXPENSE"."USER_CREDENTIAL" ("USER_ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger BI_CATEGORY
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "EXPENSE"."BI_CATEGORY" 
+  before insert on "CATEGORY"               
+  for each row  
+begin   
+    select "CATEGORY_SEQ".nextval into :NEW.CATEGORY_ID from dual; 
+end; 
+
+/
+ALTER TRIGGER "EXPENSE"."BI_CATEGORY" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger BI_COUNTRY
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "EXPENSE"."BI_COUNTRY" 
+  before insert on "COUNTRY"               
+  for each row  
+begin   
+    select "COUNTRY_SEQ".nextval into :NEW.COUNTRY_ID from dual; 
+end; 
+
+/
+ALTER TRIGGER "EXPENSE"."BI_COUNTRY" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger BI_CURRENCY
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "EXPENSE"."BI_CURRENCY" 
+  before insert on "CURRENCY"               
+  for each row  
+begin   
+    select "CURRENCY_SEQ".nextval into :NEW.CURRENCY_ID from dual; 
+end; 
+
+/
+ALTER TRIGGER "EXPENSE"."BI_CURRENCY" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger BI_FORMAT_DATE
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "EXPENSE"."BI_FORMAT_DATE" 
+  before insert on "FORMAT_DATE"               
+  for each row  
+begin   
+    select "DATE_FORMAT_SEQ".nextval into :NEW.ID from dual; 
+end; 
+
+/
+ALTER TRIGGER "EXPENSE"."BI_FORMAT_DATE" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger BI_ROLE
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "EXPENSE"."BI_ROLE" 
+  before insert on "ROLE"               
+  for each row  
+begin   
+    select "ROLE_SEQ".nextval into :NEW.ROLE_ID from dual; 
+end; 
+
+/
+ALTER TRIGGER "EXPENSE"."BI_ROLE" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger BI_TRANSACTION_LOG
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "EXPENSE"."BI_TRANSACTION_LOG" 
+  before insert on "TRANSACTION_LOG"               
+  for each row  
+begin   
+    select "TRANSACTION_LOG_SEQ".nextval into :NEW.TRANSACTION_ID from dual; 
+end; 
+
+/
+ALTER TRIGGER "EXPENSE"."BI_TRANSACTION_LOG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger BI_USER_CREDENTIAL
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "EXPENSE"."BI_USER_CREDENTIAL" 
+  before insert on "USER_CREDENTIAL"               
+  for each row  
+begin   
+    select "USER_CREDENTIAL_SEQ".nextval into :NEW.USER_ID from dual; 
+end; 
+
+/
+ALTER TRIGGER "EXPENSE"."BI_USER_CREDENTIAL" ENABLE;

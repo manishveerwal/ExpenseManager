@@ -1,5 +1,7 @@
 package org.expensemanager.service;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
@@ -24,10 +26,9 @@ public class UserServiceImpl implements UserService {
 	private static final String GET_ROLE_ID = "SELECT ROLE_ID FROM ROLE WHERE ROLE=?";
 	private static final String GET_COUNTRY_ID = "SELECT COUNTRY_ID FROM COUNTRY WHERE NAME=?";
 	private static final String GET_USER_ID = "SELECT USER_ID FROM USER_CREDENTIAL WHERE EMAIL=?";
-	private static final String GET_PASSWORD_BY_USER = "SELECT PASSWORD FROM USER_CREDENTIAL WHERE USER=?";
-	private static final String IS_USER_EXIST = "SELECT COUNT(*) FROM USER_CREDENTIAL WHERE USER=?";
-	
-	private static final String DEFAULT_ROLE = "USER";
+	private static final String GET_PASSWORD_BY_USER = "SELECT PASSWORD FROM USER_CREDENTIAL WHERE EMAIL=?";
+	private static final String IS_USER_EXIST = "SELECT COUNT(*) FROM USER_CREDENTIAL WHERE EMAIL=?";
+	private static final String GET_COUNTRY_LIST = "SELECT NAME FROM COUNTRY";
 	
 	public UserServiceImpl() {
 		
@@ -69,10 +70,15 @@ public class UserServiceImpl implements UserService {
 	
 	public boolean isUserExist(String user){
 		int count = jdbcTemplate.queryForInt(IS_USER_EXIST, user);
+		log.debug("User count: " + count);
 		if (count == 0) {
 			return false;
 		} else {
 			return true;
 		}
+	}
+	
+	public List<String> listCountries() {
+		return jdbcTemplate.queryForList(GET_COUNTRY_LIST, String.class);
 	}
 }

@@ -7,6 +7,7 @@ public class User implements Serializable {
 	private long userId;
 	private String email;
 	private String password;
+	private String password1;
 	private String role;
 	private String firstName;
 	private String lastName;
@@ -101,5 +102,13 @@ public class User implements Serializable {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+	
+	public String getPassword1() {
+		return password1;
+	}
+
+	public void setPassword1(String password1) {
+		this.password1 = password1;
 	}
 }

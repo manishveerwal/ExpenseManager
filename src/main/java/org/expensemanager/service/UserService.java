@@ -9,4 +9,6 @@ public interface UserService {
 	public boolean checkUserPassword(String user, String password);
 	public boolean isUserExist(String user);
 	public List<String> listCountries();
+	public long getUserId(String username);
+	public User getUser(String username);
 }

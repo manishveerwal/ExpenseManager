@@ -3,6 +3,7 @@ package org.expensemanager.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class NavigationController {
@@ -21,13 +22,10 @@ public class NavigationController {
 	}
 	
 	@RequestMapping("/signIn")
-	public String signInPage(){
-		return "signIn";
-	}
-	
-	@RequestMapping("/logonFailure")
-	public String logonFailure(Model model){
-		model.addAttribute("singInError", "Invalid username or password.");
+	public String signInPage(@RequestParam String error, Model model){
+		if (error.equals("true")) {
+			model.addAttribute("singInError", "Invalid username or password.");
+		}
 		return "signIn";
 	}
 	

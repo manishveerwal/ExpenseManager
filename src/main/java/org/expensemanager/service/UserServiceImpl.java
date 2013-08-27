@@ -1,5 +1,7 @@
 package org.expensemanager.service;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -8,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.expensemanager.bean.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
@@ -29,6 +32,7 @@ public class UserServiceImpl implements UserService {
 	private static final String GET_PASSWORD_BY_USER = "SELECT PASSWORD FROM USER_CREDENTIAL WHERE EMAIL=?";
 	private static final String IS_USER_EXIST = "SELECT COUNT(*) FROM USER_CREDENTIAL WHERE EMAIL=?";
 	private static final String GET_COUNTRY_LIST = "SELECT NAME FROM COUNTRY";
+	private static final String GET_USER_BY_EMAIL = "select ud.user_id, ud.first_name, ud.last_name, ud.gender from user_details ud, user_credential uc where ud.user_id = uc.user_id and uc.email = ?";
 	
 	public UserServiceImpl() {
 		
@@ -56,6 +60,25 @@ public class UserServiceImpl implements UserService {
 			log.error("Error while Registering User.", e);
 			transactionManager.rollback(status);
 		}
+	}
+	
+	@Override
+	public long getUserId(String username) {
+		return jdbcTemplate.queryForLong(GET_USER_ID, username);
+	}
+	
+	public User getUser(String username){
+		return jdbcTemplate.queryForObject(GET_USER_BY_EMAIL, new Object[] {username}, new RowMapper<User>() {
+			@Override
+			public User mapRow(ResultSet resultSet, int i) throws SQLException {
+				User user = new User();
+				user.setUserId(resultSet.getLong("user_id"));
+				user.setFirstName(resultSet.getString("first_name"));
+				user.setLastName(resultSet.getString("last_name"));
+				user.setGender(resultSet.getString("gender"));
+				return user;
+			}
+		});
 	}
 	
 	@Override

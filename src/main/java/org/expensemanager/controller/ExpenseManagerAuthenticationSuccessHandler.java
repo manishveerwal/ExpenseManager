@@ -1,12 +1,10 @@
 package org.expensemanager.controller;
 
 import java.io.IOException;
-import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.expensemanager.service.UserService;
 import org.springframework.security.core.Authentication;

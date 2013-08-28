@@ -13,6 +13,7 @@ public class User implements Serializable {
 	private String lastName;
 	private String gender;
 	private String country;
+	private String currency;
 
 	public User() {
 	}
@@ -110,5 +111,13 @@ public class User implements Serializable {
 
 	public void setPassword1(String password1) {
 		this.password1 = password1;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
 }

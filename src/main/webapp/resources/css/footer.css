@@ -2,5 +2,6 @@
 	font-size: small;
 	background-color: #025928;
 	text-align: center;
-	clear: right;
+	clear: both;
+	margin-bottom: 10px;
 }

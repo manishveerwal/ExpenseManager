@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/ExpenseManager/resources/css/footer.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/signIn.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/form.css" />
+<link rel="stylesheet" href="/ExpenseManager/resources/css/button.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome to Expense Manager</title>
 </head>
@@ -17,10 +18,11 @@
 		<%@include file="includes/navigationIndex.jsp"%>
 		<div id="signInSide">ABOUT WEBSITE</div>
 		<div id="signIn">
+			<div style="font-size: medium; margin: 0px 0px 30px 0px">Sign in</div>
 			<form id="loginForm" action="ExpenseManager/j_spring_security_check" method="post">
-				<div class="fieldName">UserName</div>
+				<div class="fieldName">Username</div>
 				<div>
-					<input id="email" name="j_username" class="fieldSize" />
+					<input id="email" name="j_username" class="fieldSize" autofocus="autofocus" />
 				</div>
 				<div class="fieldName">Password</div>
 				<div>
@@ -28,8 +30,7 @@
 				</div>
 				<div style="color: red;">${singInError}</div>
 				<div class="fieldName">
-					<input type="submit" name="create" value="Sign Up"
-						id="signUpButton" class="button"/>
+					<input class="button" type="submit" name="create" value="Sign in"/>
 				</div>
 			</form>
 		</div>

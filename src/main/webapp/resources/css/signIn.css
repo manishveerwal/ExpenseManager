@@ -1,11 +1,14 @@
 #signInSide{
-	margin: 0px 300px 0px 0px;
+	margin: 10px;
 	border: 1px solid black;
+	min-height: 500px;
+	min-width: 850px;
+	float: left;
 }
 
 #signIn{
-	margin: 10px 0px 10px 10px;
-	float: right;
+	margin: 100px 30px 10px 880px;
 	border: 1px solid black;
-	padding: 10px;
+	padding: 20px;
+	font-size: small;
 }

@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 	private static final String GET_PASSWORD_BY_USER = "SELECT PASSWORD FROM USER_CREDENTIAL WHERE EMAIL=?";
 	private static final String IS_USER_EXIST = "SELECT COUNT(*) FROM USER_CREDENTIAL WHERE EMAIL=?";
 	private static final String GET_COUNTRY_LIST = "SELECT NAME FROM COUNTRY";
-	private static final String GET_USER_BY_EMAIL = "select ud.user_id, ud.first_name, ud.last_name, ud.gender from user_details ud, user_credential uc where ud.user_id = uc.user_id and uc.email = ?";
+	private static final String GET_USER_BY_EMAIL = "select ud.user_id, ud.first_name, ud.last_name, ud.gender, c.currency_name from user_details ud, user_credential uc, currency c where ud.user_id = uc.user_id and c.country_id=c.country_id and uc.email = ?";
 	
 	public UserServiceImpl() {
 		
@@ -76,6 +76,7 @@ public class UserServiceImpl implements UserService {
 				user.setFirstName(resultSet.getString("first_name"));
 				user.setLastName(resultSet.getString("last_name"));
 				user.setGender(resultSet.getString("gender"));
+				user.setCurrency(resultSet.getString("currency_name"));
 				return user;
 			}
 		});

@@ -1,14 +1,13 @@
 #header a{
 	text-decoration: none;
 	margin: 0px 10px 0px 10px;
-	font-size: x-large;
+	font-size: medium;
 	color: white;
 }
 
 #header a:HOVER{
-	color: #0099cc;
+	color: #FF6600;
 }
-
 
 #header{
 	background-color: #025928;

@@ -24,13 +24,8 @@ public class NavigationController {
 	@RequestMapping("/signIn")
 	public String signInPage(@RequestParam String error, Model model){
 		if (error.equals("true")) {
-			model.addAttribute("singInError", "Invalid username or password.");
+			model.addAttribute("singInError", "Invalid username or password");
 		}
 		return "signIn";
-	}
-	
-	@RequestMapping("/secure/home")
-	public String homePage(){
-		return "home";
 	}
 }

@@ -13,7 +13,7 @@
 		<security:intercept-url pattern="/secure/**" access="isAuthenticated()" />
 		<security:form-login 
 			login-processing-url="/j_spring_security_check" 
-			login-page="/signIn" 
+			login-page="/signIn?error=false" 
 			authentication-failure-url="/signIn?error=true" 
 			authentication-success-handler-ref="expenseManagerAuthenticationSuccessHandler" />
 		<security:logout logout-url="/logout" logout-success-url="/signIn?error=false"/>

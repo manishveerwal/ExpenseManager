@@ -1,9 +1,29 @@
-div {
+tr {
 	padding: 5px;
 	margin: 10px;
 }
 
-div.summary{
-	font-size: large;
+td.summary, td.expenseValue, td.incomeValue{
+	font-size: small;
+}
+
+td.summary{
+	text-align: right;
+}
+
+td.expenseValue, td.incomeValue{
+	text-align: left;
+}
+
+td.expenseValue{
+	color: #E60000;
+}
+
+td.incomeValue{
+	color: green;
+}
+
+label.label{
+	font-size: medium;
 	font-weight: bold;
 }

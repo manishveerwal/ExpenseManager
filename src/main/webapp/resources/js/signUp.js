@@ -4,37 +4,36 @@ $(document).ready(function() {
 		var password =  $('#password').val();
 		var password1 =  $('#password1').val();
 		$('div.errorField').remove();
-		if ($('#firstName').val() == "") {
-			$('#firstName').before("<div class=\"errorField\" style=\"color: red;\">Field Can not be empty</div>");
-			goAhead = false;
-		}
-		if ($('#lastName').val() == "") {
-			$('#lastName').before("<div class=\"errorField\" style=\"color: red;\">Field Can not be empty</div>");
+		if ($('#firstName').val() == "" || $('#lastName').val() == "") {
+			$('#lastName').after("<div class=\"errorField\" style=\"color: red;\">Please enter first name and last name</div>");
 			goAhead = false;
 		}
 		if ($('#email').val() == "") {
-			$('#email').before("<div class=\"errorField\" style=\"color: red;\">Field Can not be empty</div>");
+			$('#email').after("<div id=\"emailValidationError\" class=\"errorField\" style=\"color: red;\">Enter your email address</div>");
+			$("#emailError").text("");
 			goAhead = false;
 		}
 		if (password == "") {
-			$('#password').before("<div class=\"errorField\" style=\"color: red;\">Field Can not be empty</div>");
+			$('#password').after("<div class=\"errorField\" style=\"color: red;\">Choose your password</div>");
 			goAhead = false;
 		}
 		if (password1 == "") {
-			$('#password1').before("<div class=\"errorField\" style=\"color: red;\">Confirm your password here.</div>");
+			$('#password1').after("<div class=\"errorField\" style=\"color: red;\">Confirm your password here.</div>");
 			goAhead = false;
 		}
-		if ($('#gender').val() == "Select") {
-			$('#gender').before("<div class=\"errorField\" style=\"color: red;\">Please select your gender</div>");
+		if ($('#gender').val() == "Your Gender") {
+			$('#gender').after("<div class=\"errorField\" style=\"color: red;\">Please select your gender</div>");
 			goAhead = false;
 		}
-		if ($('#country').val() == "Select") {
-			$('#country').before("<div class=\"errorField\" style=\"color: red;\">Please select your country</div>");
+		if ($('#country').val() == "Your Country") {
+			$('#country').after("<div class=\"errorField\" style=\"color: red;\">Please select your country</div>");
 			goAhead = false;
 		}
 		
 		if ((password != "" && password1 != "") && password != password1) {
-			$('#password').before("<div class=\"errorField\" style=\"color: red;\">Password and Confirm Password does not match</div>");
+			$('#password').after("<div class=\"errorField\" style=\"color: red;\">Password and Confirm Password does not match</div>");
+			$('#password').val('');
+			$('#password1').val('');
 			goAhead = false;
 		}
 		
@@ -52,6 +51,7 @@ $(document).ready(function() {
 			$.getJSON("/ExpenseManager/isUserExist?email="+$("#email").val(), function(emailMsg){
 				if (emailMsg.error) {
 					$("#emailError").text(emailMsg.msg);
+					$("#email").val('');
 				}
 			});
 		}
@@ -59,5 +59,22 @@ $(document).ready(function() {
 	
 	$("#email").focus(function() {
 		$("#emailError").text("");
+		$("#emailValidationError").remove();
+	});
+	
+	$("#gender").change(function() {
+		if ($("#gender").val() == "Your Gender") {
+			$("#gender").css('color', '#999');
+		} else {
+			$("#gender").css('color', '#000');
+		}
+	});
+	
+	$("#country").change(function() {
+		if ($("#country").val() == "Your Country") {
+			$("#country").css('color', '#999');
+		} else {
+			$("#country").css('color', '#000');
+		}
 	});
 });

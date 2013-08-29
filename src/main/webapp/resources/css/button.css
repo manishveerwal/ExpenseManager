@@ -1,15 +1,15 @@
 .button {
 	text-decoration: none;
-	border: 1px solid #3079ed;
+	border: thin solid #024720;
 	color: #fff;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-	background-color: #4d90fe;
+	background-color: #025928;
 	padding: 8px;
 }
 
 .button:HOVER {
-	border: 1px solid #2f5bb7;
+	border: thin solid #025928;
 	color: #fff;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-	background-color: #357ae8;
+	background-color: #679B7E;
 }

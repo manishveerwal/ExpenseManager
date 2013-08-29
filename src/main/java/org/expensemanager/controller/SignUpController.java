@@ -44,7 +44,7 @@ public class SignUpController {
 	public String registerUser(Model model, User user){
 		user.setRole(DEFAULT_ROLE);
 		userService.create(user);
-		return "redirect:/signIn";
+		return "redirect:/signIn?error=false";
 	}
 	
 	@RequestMapping(value="/isUserExist", method=RequestMethod.GET, produces="application/json")

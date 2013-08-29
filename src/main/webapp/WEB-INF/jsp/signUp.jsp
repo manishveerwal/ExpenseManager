@@ -5,13 +5,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet"
-	href="/ExpenseManager/resources/css/container.css" />
-<link rel="stylesheet"
-	href="/ExpenseManager/resources/css/navigation.css" />
+<link rel="stylesheet" href="/ExpenseManager/resources/css/container.css" />
+<link rel="stylesheet" href="/ExpenseManager/resources/css/navigation.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/footer.css" />
-<link rel="stylesheet" href="/ExpenseManager/resources/css/signup.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/form.css" />
+<link rel="stylesheet" href="/ExpenseManager/resources/css/signup.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/button.css" />
 <script type="text/javascript"
 	src="/ExpenseManager/resources/js/jquery-2.0.2.js"></script>
@@ -22,48 +20,39 @@
 </head>
 <body>
 	<div id="container">
-		<%@include file="includes/header.jsp"%>
+		<%@include file="includes/headerIndex.jsp"%>
 		<%@include file="includes/navigationIndex.jsp"%>
-		<div id="signupSide">ABOUT WEBSITE</div>
 		<div id="signup">
 			<fieldset>
-				<legend>Sign up</legend>
+				<legend style="color: #025928; font-weight: bold;">Sign up</legend>
 				<form:form id="accountForm" action="register" method="post"
 					modelAttribute="user">
-					<div class="fieldName">First Name</div>
 					<div>
-						<form:input path="firstName" cssClass="fieldSize" autofocus="autofocus"/>
+						<form:input path="firstName" cssClass="fieldSize" placeholder="First Name"/>
+						<form:input path="lastName" cssClass="fieldSize" placeholder="Last Name"/>
 					</div>
-					<div class="fieldName">Last Name</div>
 					<div>
-						<form:input path="lastName" cssClass="fieldSize" />
 					</div>
-					<div class="fieldName">Email</div>
-					<div id="emailError"></div>
 					<div>
-						<form:input path="email" cssClass="fieldSize" />
+						<form:input path="email" cssClass="fieldSize" placeholder="Email" />
+						<div id="emailError"></div>
 					</div>
-					<div class="fieldName">Password</div>
 					<div>
-						<form:input path="password" cssClass="fieldSize" type="password" />
+						<form:input path="password" cssClass="fieldSize" type="password" placeholder="Password" />
 					</div>
-					<div class="fieldName">Confirm Password</div>
 					<div>
-						<form:input path="password1" cssClass="fieldSize" type="password" />
+						<form:input path="password1" cssClass="fieldSize" type="password" placeholder="Confirm Password"/>
 					</div>
-					<div class="fieldName">Gender</div>
 					<div>
-						<select id="gender" name="gender" class="fieldSize">
-							<option>Select</option>
+						<select id="gender" name="gender" class="fieldSize" style="color: #999;">
+							<option>Your Gender</option>
 							<option value="M">Male</option>
 							<option value="F">Female</option>
 						</select>
 					</div>
-
-					<div class="fieldName">Country</div>
 					<div>
-						<select id="country" name="country" class="fieldSize">
-							<option>Select</option>
+						<select id="country" name="country" class="fieldSize" style="color: #999;">
+							<option>Your Country</option>
 							<c:forEach items="${countries}" var="location">
 								<option value="${location}">${location}</option>
 							</c:forEach>

@@ -1,14 +1,5 @@
-#signupSide{
-	margin: 40px 20px 20px 0px;
-	float: right;
-	border: 1px solid black;
-	width: 800px;
-	height: 510px;
-}
-
 #signup{
-	margin: 10px 900px 10px 10px;
-	padding: 20px;
+	padding: 0px;
 }
 
 #emailError, .errorField{
@@ -16,3 +7,14 @@
 	font-size: small;
 }
 
+fieldset{
+	border-color: #1975FF;
+	width: 250px;
+	padding: 20px;
+	margin-top: 20px;
+	margin-left: 475px;
+}
+
+#firstName, #lastName{
+	width: 122.5px;
+}

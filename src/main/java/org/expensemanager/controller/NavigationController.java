@@ -26,6 +26,6 @@ public class NavigationController {
 		if (error.equals("true")) {
 			model.addAttribute("singInError", "Invalid username or password");
 		}
-		return "signIn";
+		return "index";
 	}
 }

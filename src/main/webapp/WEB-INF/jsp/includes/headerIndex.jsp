@@ -2,5 +2,4 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div id="top" style="height: 100px;">
-		Welcome ${user.firstName}
 </div>

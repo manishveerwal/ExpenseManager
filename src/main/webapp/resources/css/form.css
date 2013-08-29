@@ -8,7 +8,11 @@
 }
 
 .fieldName{
-	margin: 10px 0px 0px 0px;
+	margin: 20px 0px 0px 0px;
 	font-weight: bold;
-	font-size: smaller;
+	font-size: 14px;
+}
+
+form div{
+	margin-bottom: 20px;
 }

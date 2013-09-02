@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<div id="top" style="height: 50px;">Welcome ${user.firstName}</div>
+<div id="top" style="height: 50px;"></div>
+<div>Welcome ${user.firstName}</div>

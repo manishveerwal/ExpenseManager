@@ -45,10 +45,10 @@
 							</c:forEach>
 						</select>
 					</div>
-					<div>
+					<div id="gender">
 						<label for="gender" class="fieldName">Gender :</label>
-						<input type="radio" name="gender" value="M">Male
-						<input type="radio" name="gender" value="F">Female
+						<input id="genderM" type="radio" name="gender" value="M">Male
+						<input id="genderF" type="radio" name="gender" value="F">Female
 					</div>
 					<div class="fieldName">
 						<input class="button" type="submit" name="create" value="Sign Up" />

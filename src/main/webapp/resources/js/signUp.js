@@ -21,8 +21,8 @@ $(document).ready(function() {
 			$('#password1').after("<div class=\"errorField\" style=\"color: red;\">Confirm your password here.</div>");
 			goAhead = false;
 		}
-		if ($('#gender').val() == "Your Gender") {
-			$('#gender').after("<div class=\"errorField\" style=\"color: red;\">Please select your gender</div>");
+		if (!$("#genderM").is(":checked") && !$("#genderF").is(":checked")) {
+			$('#gender').append("<div class=\"errorField\" style=\"color: red;\">Please select your gender</div>");
 			goAhead = false;
 		}
 		if ($('#country').val() == "Your Country") {

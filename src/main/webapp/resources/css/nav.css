@@ -1,27 +1,51 @@
 nav ul li a{
 	text-decoration: none;
 	color: #D9DADA;
-	font-size: medium;
+	font-size: small;
 	font-weight: bold;
 	display: block;
 	padding: 12px;
 	border-bottom: 3px solid #303030;
+	border-top: 3px solid #303030;
 	text-align: center;
 	text-transform: uppercase;
 	width: 120px;
 }
 
-nav ul li a:HOVER{
+a:HOVER{
 	border-bottom: 3px solid #FF6600;
+	color: #FFFFFF;
+}
+
+nav ul li:HOVER ul{
+	display: block;
+	position: absolute;
 }
 
 nav ul li{
+	list-style: none;
 	display: inline-block;
 }
 
 nav ul{
 	background-color: #303030;
-	list-style-type:none;
 	padding: 0px;
 	margin: 0px;
+}
+
+nav ul li ul{
+	display: none;
+}
+
+nav ul li ul li{
+	display: block;
+}
+
+nav ul li ul li a:HOVER{
+	border-bottom: 3px solid #FF6600;
+	border-top: 3px solid #FF6600;
+}
+
+a.settings{
+	width: 150px;
 }

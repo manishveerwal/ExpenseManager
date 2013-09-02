@@ -86,9 +86,6 @@
 					</tr>
 				</table>
 			<hr>
-			<div style="margin-top:  30px;">
-				<a class="button" href="addIncome">Add Income</a> <a class="button" href="addExpense">Add Expense</a>
-			</div>
 		</div>
 		<%@include file="includes/footer.jsp" %>
 	</div>

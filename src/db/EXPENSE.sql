@@ -1,10 +1,11 @@
 --------------------------------------------------------
---  File created - Sunday-September-01-2013   
+--  File created - Monday-September-02-2013   
 --------------------------------------------------------
 DROP TABLE "EXPENSE"."ACCOUNT" cascade constraints;
 DROP TABLE "EXPENSE"."CATEGORY" cascade constraints;
 DROP TABLE "EXPENSE"."COUNTRY" cascade constraints;
 DROP TABLE "EXPENSE"."CURRENCY" cascade constraints;
+DROP TABLE "EXPENSE"."FEEDBACK" cascade constraints;
 DROP TABLE "EXPENSE"."FORMAT_DATE" cascade constraints;
 DROP TABLE "EXPENSE"."ROLE" cascade constraints;
 DROP TABLE "EXPENSE"."TRANSACTION_LOG" cascade constraints;
@@ -33,6 +34,11 @@ DROP TABLE "EXPENSE"."USER_DETAILS" cascade constraints;
 
    CREATE SEQUENCE  "EXPENSE"."CURRENCY_SEQ"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE ;
 --------------------------------------------------------
+--  DDL for Sequence FEEDBACK_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "EXPENSE"."FEEDBACK_SEQ"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
 --  DDL for Sequence DATE_FORMAT_SEQ
 --------------------------------------------------------
 
@@ -51,7 +57,7 @@ DROP TABLE "EXPENSE"."USER_DETAILS" cascade constraints;
 --  DDL for Sequence USER_CREDENTIAL_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "EXPENSE"."USER_CREDENTIAL_SEQ"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 44 CACHE 20 NOORDER  NOCYCLE ;
+   CREATE SEQUENCE  "EXPENSE"."USER_CREDENTIAL_SEQ"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 64 CACHE 20 NOORDER  NOCYCLE ;
 --------------------------------------------------------
 --  DDL for Table ACCOUNT
 --------------------------------------------------------
@@ -97,6 +103,19 @@ DROP TABLE "EXPENSE"."USER_DETAILS" cascade constraints;
    (	"CURRENCY_ID" NUMBER, 
 	"CURRENCY_NAME" VARCHAR2(30 BYTE), 
 	"COUNTRY_ID" NUMBER
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table FEEDBACK
+--------------------------------------------------------
+
+  CREATE TABLE "EXPENSE"."FEEDBACK" 
+   (	"FEEDBACK_ID" NUMBER, 
+	"NAME" VARCHAR2(20 BYTE), 
+	"EMAIL" VARCHAR2(30 BYTE), 
+	"FEEDBACK_COMMENT" VARCHAR2(4000 BYTE)
    ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
@@ -240,6 +259,10 @@ Insert into EXPENSE.COUNTRY (COUNTRY_ID,NAME) values (1,'India');
 REM INSERTING into EXPENSE.CURRENCY
 SET DEFINE OFF;
 Insert into EXPENSE.CURRENCY (CURRENCY_ID,CURRENCY_NAME,COUNTRY_ID) values (1,'INR',1);
+REM INSERTING into EXPENSE.FEEDBACK
+SET DEFINE OFF;
+Insert into EXPENSE.FEEDBACK (FEEDBACK_ID,NAME,EMAIL,FEEDBACK_COMMENT) values (1,'manish','manish.veerwal@gmail.com','Good Job');
+Insert into EXPENSE.FEEDBACK (FEEDBACK_ID,NAME,EMAIL,FEEDBACK_COMMENT) values (2,'manish','manish.veerwal@gmail.com','Hurrey');
 REM INSERTING into EXPENSE.FORMAT_DATE
 SET DEFINE OFF;
 Insert into EXPENSE.FORMAT_DATE (ID,DATE_FORMAT_NAME,FORMAT_DEFAULT) values (1,'DD/MM/YYYY','Y');
@@ -270,6 +293,7 @@ Insert into EXPENSE.USER_CREDENTIAL (USER_ID,EMAIL,PASSWORD,ROLE_ID) values (26,
 Insert into EXPENSE.USER_CREDENTIAL (USER_ID,EMAIL,PASSWORD,ROLE_ID) values (27,'manish.veerwal1@gmail.com','manish',2);
 Insert into EXPENSE.USER_CREDENTIAL (USER_ID,EMAIL,PASSWORD,ROLE_ID) values (29,'manish.veerwal3@gmail.com','manish',2);
 Insert into EXPENSE.USER_CREDENTIAL (USER_ID,EMAIL,PASSWORD,ROLE_ID) values (30,'manish.veerwal4@gmail.com','manish',2);
+Insert into EXPENSE.USER_CREDENTIAL (USER_ID,EMAIL,PASSWORD,ROLE_ID) values (46,'manish.veerwal5@gmail.com','manish',2);
 Insert into EXPENSE.USER_CREDENTIAL (USER_ID,EMAIL,PASSWORD,ROLE_ID) values (23,'manish.veerwal2010@gmail.com','manish',2);
 Insert into EXPENSE.USER_CREDENTIAL (USER_ID,EMAIL,PASSWORD,ROLE_ID) values (22,'manish.veerwal@gmail.com','manish',2);
 REM INSERTING into EXPENSE.USER_DATE_FORMAT
@@ -281,6 +305,7 @@ Insert into EXPENSE.USER_DETAILS (USER_ID,FIRST_NAME,LAST_NAME,GENDER,COUNTRY_ID
 Insert into EXPENSE.USER_DETAILS (USER_ID,FIRST_NAME,LAST_NAME,GENDER,COUNTRY_ID) values (27,'manish','veer','M',1);
 Insert into EXPENSE.USER_DETAILS (USER_ID,FIRST_NAME,LAST_NAME,GENDER,COUNTRY_ID) values (28,'b','v','M',1);
 Insert into EXPENSE.USER_DETAILS (USER_ID,FIRST_NAME,LAST_NAME,GENDER,COUNTRY_ID) values (30,'manish','veerwal','M',1);
+Insert into EXPENSE.USER_DETAILS (USER_ID,FIRST_NAME,LAST_NAME,GENDER,COUNTRY_ID) values (46,'Manish','Veerwal','M',1);
 Insert into EXPENSE.USER_DETAILS (USER_ID,FIRST_NAME,LAST_NAME,GENDER,COUNTRY_ID) values (23,'Manish','Veerwal','M',1);
 Insert into EXPENSE.USER_DETAILS (USER_ID,FIRST_NAME,LAST_NAME,GENDER,COUNTRY_ID) values (22,'Manish','Veerwal','M',1);
 --------------------------------------------------------
@@ -316,6 +341,15 @@ Insert into EXPENSE.USER_DETAILS (USER_ID,FIRST_NAME,LAST_NAME,GENDER,COUNTRY_ID
 
   CREATE UNIQUE INDEX "EXPENSE"."CURRENCY_PK" ON "EXPENSE"."CURRENCY" ("CURRENCY_ID") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index FEEDBACK_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EXPENSE"."FEEDBACK_PK" ON "EXPENSE"."FEEDBACK" ("FEEDBACK_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
   TABLESPACE "USERS" ;
@@ -399,6 +433,17 @@ Insert into EXPENSE.USER_DETAILS (USER_ID,FIRST_NAME,LAST_NAME,GENDER,COUNTRY_ID
   ALTER TABLE "EXPENSE"."CURRENCY" MODIFY ("CURRENCY_ID" NOT NULL ENABLE);
  
   ALTER TABLE "EXPENSE"."CURRENCY" MODIFY ("COUNTRY_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table FEEDBACK
+--------------------------------------------------------
+
+  ALTER TABLE "EXPENSE"."FEEDBACK" ADD CONSTRAINT "FEEDBACK_PK" PRIMARY KEY ("FEEDBACK_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+ 
+  ALTER TABLE "EXPENSE"."FEEDBACK" MODIFY ("FEEDBACK_ID" NOT NULL ENABLE);
 --------------------------------------------------------
 --  Constraints for Table FORMAT_DATE
 --------------------------------------------------------
@@ -557,6 +602,19 @@ end;
 
 /
 ALTER TRIGGER "EXPENSE"."BI_CURRENCY" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger BI_FEEDBACK
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "EXPENSE"."BI_FEEDBACK" 
+  before insert on "FEEDBACK"               
+  for each row  
+begin   
+    select "FEEDBACK_SEQ".nextval into :NEW.FEEDBACK_ID from dual; 
+end; 
+
+/
+ALTER TRIGGER "EXPENSE"."BI_FEEDBACK" ENABLE;
 --------------------------------------------------------
 --  DDL for Trigger BI_FORMAT_DATE
 --------------------------------------------------------

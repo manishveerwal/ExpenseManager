@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="container">
-		<%@include file="includes/header.jsp" %>
+		<%@include file="includes/headerIndex.jsp" %>
 		<%@include file="includes/navigationIndex.jsp" %>
 		<div id="aboutUS" style="height: 400px; text-align: center;">ABOUT US</div>
 		<%@include file="includes/footer.jsp" %>

@@ -6,9 +6,6 @@
 <html>
 <head>
 <link rel="stylesheet" href="/ExpenseManager/resources/css/container.css" />
-<link rel="stylesheet" href="/ExpenseManager/resources/css/navigation.css" />
-<link rel="stylesheet" href="/ExpenseManager/resources/css/footer.css" />
-<link rel="stylesheet" href="/ExpenseManager/resources/css/form.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/signup.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/button.css" />
 <script type="text/javascript"
@@ -24,14 +21,11 @@
 		<%@include file="includes/navigationIndex.jsp"%>
 		<div id="signup">
 			<fieldset>
-				<legend style="color: #025928; font-weight: bold;">Sign up</legend>
 				<form:form id="accountForm" action="register" method="post"
 					modelAttribute="user">
 					<div>
 						<form:input path="firstName" cssClass="fieldSize" placeholder="First Name"/>
 						<form:input path="lastName" cssClass="fieldSize" placeholder="Last Name"/>
-					</div>
-					<div>
 					</div>
 					<div>
 						<form:input path="email" cssClass="fieldSize" placeholder="Email" />
@@ -44,13 +38,6 @@
 						<form:input path="password1" cssClass="fieldSize" type="password" placeholder="Confirm Password"/>
 					</div>
 					<div>
-						<select id="gender" name="gender" class="fieldSize" style="color: #999;">
-							<option>Your Gender</option>
-							<option value="M">Male</option>
-							<option value="F">Female</option>
-						</select>
-					</div>
-					<div>
 						<select id="country" name="country" class="fieldSize" style="color: #999;">
 							<option>Your Country</option>
 							<c:forEach items="${countries}" var="location">
@@ -58,7 +45,11 @@
 							</c:forEach>
 						</select>
 					</div>
-
+					<div>
+						<label for="gender" class="fieldName">Gender :</label>
+						<input type="radio" name="gender" value="M">Male
+						<input type="radio" name="gender" value="F">Female
+					</div>
 					<div class="fieldName">
 						<input class="button" type="submit" name="create" value="Sign Up" />
 					</div>

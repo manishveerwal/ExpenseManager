@@ -32,7 +32,6 @@ public class TransactionServiceImpl implements TransactionService {
 			"category_id=(select category_id from category where category_name='Expense') and user_id=?";
 	private static final String TOTAL_INCOME = "select sum(transaction_amount) as INCOME from transaction_log where " +
 			"category_id=(select category_id from category where category_name='Income') and user_id=?";
-	private static final String GET_CATEGORY_ID = "select category_id from category where category_name=? ";
 	private static final String SAVE_TRANSACTION = "insert into transaction_log (transaction_date, transaction_amount, " +
 			"description, category_id, user_id, account_id) " +
 			"values (?, ?, ?, ?, ?, ?)";
@@ -80,14 +79,14 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
-	public boolean saveTransaction(String category, String amount, String date,
+	public boolean saveTransaction(int category, String amount, String date,
 			String description, long userId) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		int rows = 0;
 		try {
 			rows = jdbcTemplate.update(SAVE_TRANSACTION, new java.sql.Date(dateFormat.parse(date).getTime()),
 					amount, description,
-					getCategoryID(category), userId, ACCOUNT_ID);
+					category, userId, ACCOUNT_ID);
 		} catch (ParseException e) {
 			log.error("Error parsing date " + date, e);
 		}
@@ -147,9 +146,5 @@ public class TransactionServiceImpl implements TransactionService {
 	@Override
 	public long getThisYearTransaction(long userId, int category_id) {
 		return 0;
-	}
-	
-	public int getCategoryID(String category){
-		return jdbcTemplate.queryForInt(GET_CATEGORY_ID, category);
 	}
 }

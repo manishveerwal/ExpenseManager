@@ -28,8 +28,6 @@ private Logger log = Logger.getLogger(getClass());
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
-
-
 	@Override
 	public List<String> listCountries() {
 		return jdbcTemplate.queryForList(GET_COUNTRY_LIST, String.class);

@@ -1,6 +1,8 @@
 package org.expensemanager.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Category implements Serializable {
 	
@@ -9,8 +11,10 @@ public class Category implements Serializable {
 	private int categoryLevel;
 	private long superCategoryId;
 	private String categoryDefault;
+	private List<Category> categories;
 
 	public Category() {
+		this.categories = new ArrayList<Category>();
 	}
 	
 	public Category(String categoryName, int categoryLevel,
@@ -19,6 +23,7 @@ public class Category implements Serializable {
 		this.categoryLevel = categoryLevel;
 		this.superCategoryId = superCategoryId;
 		this.categoryDefault = categoryDefault;
+		this.categories = new ArrayList<Category>();
 	}
 
 	public Category(long categoryId, String categoryName, int categoryLevel,
@@ -28,6 +33,7 @@ public class Category implements Serializable {
 		this.categoryLevel = categoryLevel;
 		this.superCategoryId = superCategoryId;
 		this.categoryDefault = categoryDefault;
+		this.categories = new ArrayList<Category>();
 	}
 
 	public long getCategoryId() {
@@ -68,5 +74,13 @@ public class Category implements Serializable {
 
 	public void setCategoryDefault(String categoryDefault) {
 		this.categoryDefault = categoryDefault;
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
 	}
 }

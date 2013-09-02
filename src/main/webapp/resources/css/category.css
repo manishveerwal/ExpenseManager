@@ -1,0 +1,69 @@
+div p {
+	text-align: center;
+	font-size: medium;
+	font-weight: bold;
+	color: #025928;
+}
+
+#incomeCat {
+	margin: 50px 0px 0px 0px;
+}
+
+#expenseCat {
+	margin: 50px 0px 0px 0px;
+}
+
+.textfield{
+	padding: 8px;
+	width: 200px;
+	margin: 20px 0px 0px 400px;
+}
+
+.button{
+	padding: 8px 15px 8px 15px;
+	font-weight: bold;
+	font-size: medium;
+}
+
+a.button{
+	padding: 5px 10px 5px 10px;
+	font-weight: bold;
+	font-size: x-small;
+}
+
+td{
+	padding: 10px;
+	font-size: small;
+}
+
+#incomeTable{
+	margin-left: 515px;
+}
+
+#expenseTable{
+	margin-left: 400px;
+	border-collapse: collapse;
+}
+
+/* #expenseTable, #expenseTable tr, #expenseTable td{ */
+/* 	border: thin solid black; */
+/* } */
+
+#expenseTable td {
+	vertical-align: top;
+}
+
+td.subCatNameTD{
+	width: 200px;
+}
+
+select {
+	width: 219px;
+	padding: 8px;
+	margin: 20px 0px 0px 400px;
+}
+
+#subCategoryField{
+	padding: 8px;
+	width: 200px;
+}

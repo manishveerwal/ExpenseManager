@@ -9,7 +9,7 @@
 
 .button:HOVER {
 	border: thin solid #025928;
-	color: #fff;
+	color: #025928;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-	background-color: #679B7E;
+	background-color: #FFFFFF;
 }

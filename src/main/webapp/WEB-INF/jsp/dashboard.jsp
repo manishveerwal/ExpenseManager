@@ -5,8 +5,7 @@
 <head>
 <link rel="stylesheet" href="/ExpenseManager/resources/css/container.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/navigation.css" />
-<link rel="stylesheet" href="/ExpenseManager/resources/css/footer.css" />
-<link rel="stylesheet" href="/ExpenseManager/resources/css/home.css" />
+<link rel="stylesheet" href="/ExpenseManager/resources/css/dashboard.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/button.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome to Expense Manager</title>

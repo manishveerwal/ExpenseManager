@@ -30,4 +30,13 @@ http://www.springframework.org/schema/jee http://www.springframework.org/schema/
 		<constructor-arg name="dataSource" ref="dataSource" />
 	</bean>
 	
+	<bean id="categoryService" class="org.expensemanager.service.CategoryServiceImpl">
+		<constructor-arg name="transactionManager" ref="transactionManager" />
+		<constructor-arg name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="feedbackService" class="org.expensemanager.service.FeedbackServiceImpl">
+		<constructor-arg name="dataSource" ref="dataSource" />
+	</bean>
+	
 </beans>

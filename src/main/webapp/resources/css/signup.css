@@ -8,13 +8,36 @@
 }
 
 fieldset{
-	border-color: #1975FF;
 	width: 250px;
-	padding: 20px;
-	margin-top: 20px;
-	margin-left: 475px;
+	padding: 40px;
+	margin: 40px 0px 40px 420px;
+	border: 0px;
 }
 
 #firstName, #lastName{
-	width: 122.5px;
+	width: 146px;
+}
+
+.button{
+	margin-left: 95px;
+}
+
+.fieldSize{
+	width: 300px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	
+	padding: 5px;
+	font-size: medium;
+}
+
+.fieldName{
+	margin: 20px 0px 0px 0px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+form div{
+	margin-bottom: 20px;
 }

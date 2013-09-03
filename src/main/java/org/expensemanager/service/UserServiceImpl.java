@@ -1,5 +1,6 @@
 package org.expensemanager.service;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -9,6 +10,7 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.expensemanager.bean.User;
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -33,6 +35,10 @@ public class UserServiceImpl implements UserService {
 	private static final String IS_USER_EXIST = "SELECT COUNT(*) FROM USER_CREDENTIAL WHERE EMAIL=?";
 	private static final String GET_COUNTRY_LIST = "SELECT NAME FROM COUNTRY";
 	private static final String GET_USER_BY_EMAIL = "select ud.user_id, ud.first_name, ud.last_name, ud.gender, c.currency_name from user_details ud, user_credential uc, currency c where ud.user_id = uc.user_id and c.country_id=c.country_id and uc.email = ?";
+	private static final String GET_ALL_CATEGORIES = "select category_id from category where category_level > 0 and category_default = 'Y'";
+	private static final String INSERT_USER_CATEGORY = "insert into user_category (user_id, category_id) values(?, ?)";
+	private static final String GET_DEFAULT_ACCOUNT = "select account_id from account where account_default = 'Y'";
+	private static final String INSERT_USER_ACCOUNT = "insert into user_account (user_id, account_id) values(?, ?)";
 	
 	public UserServiceImpl() {
 		
@@ -53,8 +59,27 @@ public class UserServiceImpl implements UserService {
 			int roleId = jdbcTemplate.queryForInt(GET_ROLE_ID, user.getRole());
 			int countryId = jdbcTemplate.queryForInt(GET_COUNTRY_ID, user.getCountry());
 			jdbcTemplate.update(INSERT_USER_CREDENTIAL, user.getEmail(), user.getPassword(), roleId);
-			long userId = jdbcTemplate.queryForLong(GET_USER_ID, user.getEmail());
+			final long userId = jdbcTemplate.queryForLong(GET_USER_ID, user.getEmail());
 			jdbcTemplate.update(INSERT_USER_DETAILS, userId, user.getFirstName(), user.getLastName(), user.getGender(), countryId);
+			
+			final List<Integer> categoryIds = jdbcTemplate.queryForList(GET_ALL_CATEGORIES, Integer.class);
+			jdbcTemplate.batchUpdate(INSERT_USER_CATEGORY, new BatchPreparedStatementSetter() {
+				
+				@Override
+				public void setValues(PreparedStatement ps, int i) throws SQLException {
+					ps.setLong(1, userId);
+					ps.setInt(2, categoryIds.get(i));
+				}
+				
+				@Override
+				public int getBatchSize() {
+					return categoryIds.size();
+				}
+			});
+			
+			int accountId = jdbcTemplate.queryForInt(GET_DEFAULT_ACCOUNT);
+			jdbcTemplate.update(INSERT_USER_ACCOUNT, userId, accountId);
+			
 			transactionManager.commit(status);
 		} catch (DataAccessException e) {
 			log.error("Error while Registering User.", e);

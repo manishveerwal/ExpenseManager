@@ -39,4 +39,9 @@ http://www.springframework.org/schema/jee http://www.springframework.org/schema/
 		<constructor-arg name="dataSource" ref="dataSource" />
 	</bean>
 	
+	<bean id="accountService" class="org.expensemanager.service.AccountServiceImpl">
+		<constructor-arg name="transactionManager" ref="transactionManager" />
+		<constructor-arg name="dataSource" ref="dataSource" />
+	</bean>
+	
 </beans>

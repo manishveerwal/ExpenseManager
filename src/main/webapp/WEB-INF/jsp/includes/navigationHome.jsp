@@ -20,7 +20,7 @@
 		<li><a href="">Chart</a></li>
 		<li><a href="" class="settings">Settings</a>
 			<ul>
-				<li><a href="" class="settings">Account</a></li>
+				<li><a href="manageAccount" class="settings">Account</a></li>
 				<li><a href="" class="settings">Date</a></li>
 				<li><a href="" class="settings">Payment Method</a></li>
 				<li><a href="" class="settings">Income Categories</a></li>

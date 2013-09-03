@@ -6,9 +6,6 @@
 <head>
 <link rel="stylesheet"
 	href="/ExpenseManager/resources/css/container.css" />
-<link rel="stylesheet"
-	href="/ExpenseManager/resources/css/navigation.css" />
-<link rel="stylesheet" href="/ExpenseManager/resources/css/footer.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/form.css" />
 <link rel="stylesheet" href="/ExpenseManager/resources/css/button.css" />
 <style type="text/css">

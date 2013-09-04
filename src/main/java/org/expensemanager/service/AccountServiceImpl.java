@@ -1,6 +1,5 @@
 package org.expensemanager.service;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -10,7 +9,6 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.expensemanager.bean.Account;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -35,6 +33,7 @@ public class AccountServiceImpl implements AccountService {
 	private static final String GET_ACCOUNTID_BY_NAME = "select account_id from account where account_name=? and rownum < 2 order by account_id desc";
 	private static final String DELETE_ACCOUNT_USER = "delete from user_account where account_id=? and user_id=?";
 	private static final String DELETE_ACCOUNT = "delete from account where account_id=? and account_default='N'";
+	private static final String DELETE_TRANSACTION_LOG = "delete from transaction_log where account_id=? and user_id=?";
 	
 	public AccountServiceImpl() {
 	}
@@ -66,6 +65,7 @@ public class AccountServiceImpl implements AccountService {
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
 			jdbcTemplate.update(DELETE_ACCOUNT_USER, accountId, userId);
+			jdbcTemplate.update(DELETE_TRANSACTION_LOG, accountId, userId);
 			jdbcTemplate.update(DELETE_ACCOUNT, accountId);
 			transactionManager.commit(status);
 			return true;

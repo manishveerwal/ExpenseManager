@@ -83,4 +83,16 @@ public class Category implements Serializable {
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuffer stringBuffer = new StringBuffer();
+		stringBuffer.append(categoryId);
+		stringBuffer.append(":");
+		stringBuffer.append(categoryName);
+		if (categories.size() > 0) {
+			stringBuffer.append(categories);
+		}
+		return stringBuffer.toString();
+	}
 }

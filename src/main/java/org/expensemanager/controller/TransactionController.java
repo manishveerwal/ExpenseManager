@@ -2,6 +2,7 @@ package org.expensemanager.controller;
 import javax.servlet.http.HttpSession;
 
 import org.expensemanager.bean.User;
+import org.expensemanager.service.AccountService;
 import org.expensemanager.service.CategoryService;
 import org.expensemanager.service.TransactionService;
 import org.expensemanager.util.Constants;
@@ -20,6 +21,9 @@ public class TransactionController {
 	
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private AccountService accountService;
 
 	public TransactionController() {
 	}
@@ -49,15 +53,20 @@ public class TransactionController {
 	}
 	
 	@RequestMapping("/secure/addExpense")
-	public String addExpensePage(Model model){
+	public String addExpensePage(Model model, HttpSession session){
+		User user = (User) session.getAttribute("user");
 		model.addAttribute("transactionType", Constants.EXPENSE);
+		model.addAttribute("expenseCategories", categoryService.getExpenseCategories(user.getUserId()));
+		model.addAttribute("accounts", accountService.getAccountByUser(user.getUserId()));
 		return "addTransaction";
 	}
 	
 	@RequestMapping("/secure/addIncome")
-	public String addIncomePage(Model model){
+	public String addIncomePage(Model model, HttpSession session){
+		User user = (User) session.getAttribute("user");
 		model.addAttribute("transactionType", Constants.INCOME);
-		model.addAttribute("incomeCategories", categoryService.getIncomeCategories());
+		model.addAttribute("incomeCategories", categoryService.getIncomeCategories(user.getUserId()));
+		model.addAttribute("accounts", accountService.getAccountByUser(user.getUserId()));
 		return "addTransaction";
 	}
 	

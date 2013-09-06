@@ -27,18 +27,30 @@ label.fieldName {
 		<%@include file="includes/navigationHome.jsp"%>
 		<div id="addTransaction">
 			<form action="saveTransaction" method="post">
+				<label class="fieldName" for="account">Account</label><br>
+				<select name="account" class="fieldSize">
+					<option>Select Account</option>
+					<c:forEach items="${accounts}" var="account">
+						<option value="${account.accountId}">${account.accountName}</option>
+					</c:forEach>
+				</select><br>
 				<label class="fieldName" for="date">Date</label><br><input class="fieldSize" name="date" type="date" /><br>
 				<label class="fieldName" for="amount">Amount</label><br><input class="fieldSize" name="amount" type="text" /><br>
 				<label class="fieldName" for="description">Description</label><br><input class="fieldSize" name="description" type="text" /><br>
-				<c:if test="${transactionType == \"Income\"}">
-					<label class="fieldName" for="incomeCategory">Category</label><br>
+				<label class="fieldName" for="category">Category</label><br>
 					<select name="category" class="fieldSize">
 						<option>Select Category</option>
+					<c:if test="${transactionType == \"Expense\"}">
+						<c:forEach items="${expenseCategories}" var="category">
+							<option value="${category.categoryId}">${category.categoryName}</option>
+						</c:forEach>
+					</c:if>
+					<c:if test="${transactionType == \"Income\"}">
 						<c:forEach items="${incomeCategories}" var="category">
 							<option value="${category.categoryId}">${category.categoryName}</option>
 						</c:forEach>
+					</c:if>
 					</select>
-				</c:if>
 				<div class="fieldName">
 					<input type="submit" value="Add ${transactionType}" class="button" />
 				</div>

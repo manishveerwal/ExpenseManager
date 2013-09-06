@@ -23,14 +23,14 @@ public class AdminController {
 	
 	@RequestMapping("/admin/manageCategory")
 	public String categoryPage(Model model){
-		model.addAttribute("expenseCategories", categoryService.getExpenseCategories());
-		model.addAttribute("incomeCategories", categoryService.getIncomeCategories());
+//		model.addAttribute("expenseCategories", categoryService.getExpenseCategories());
+//		model.addAttribute("incomeCategories", categoryService.getIncomeCategories());
 		return "category";
 	}
 	
 	@RequestMapping("/admin/createIncomeCategory")
 	public String createIncomeCategory(@RequestParam String incomeCategoryFieldValue){
-		categoryService.createIncomeCategory(incomeCategoryFieldValue);
+//		categoryService.createIncomeCategory(incomeCategoryFieldValue);
 		return "redirect:/admin/manageCategory";
 	}
 	
@@ -48,13 +48,13 @@ public class AdminController {
 	
 	@RequestMapping("/admin/createMainExpenseCategory")
 	public String createMainExpenseCategory(@RequestParam String expenseCategoryFieldValue){
-		categoryService.createMainExpenseCategory(expenseCategoryFieldValue);
+//		categoryService.createMainExpenseCategory(expenseCategoryFieldValue);
 		return "redirect:/admin/manageCategory";
 	}
 	
 	@RequestMapping("/admin/createSubExpenseCategory")
 	public String createSubExpenseCategory(@RequestParam String expenseSubCategoryFieldValue, @RequestParam String mainCategory ){
-		categoryService.createSubExpenseCategory(expenseSubCategoryFieldValue, Long.valueOf(mainCategory));
+//		categoryService.createSubExpenseCategory(expenseSubCategoryFieldValue, Long.valueOf(mainCategory));
 		return "redirect:/admin/manageCategory";
 	}
 }
